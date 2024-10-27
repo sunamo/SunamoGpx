@@ -4,18 +4,14 @@ using SunamoGpx._sunamo;
 
 public class SunamoMapyCzService(ILogger logger)
 {
-    public async Task<List<Item>> AddressToCoords(string api_key, List<string> addressToGeocode, bool throwExWhenCouldNotBeGeocoded)
+    public async Task<List<Item?>> AddressToCoords(string api_key, List<string> addressToGeocode, bool throwExWhenCouldNotBeGeocoded)
     {
-        List<Item> result = new();
+        List<Item?> result = new();
         HttpClient httpClient = new();
 
         foreach (var item in addressToGeocode)
         {
-            var geocodeResult = await AddressToCoordsSingle(httpClient, item, api_key, throwExWhenCouldNotBeGeocoded);
-            if (geocodeResult != null)
-            {
-                result.Add(geocodeResult);
-            }
+            result.Add(await AddressToCoordsSingle(httpClient, item, api_key, throwExWhenCouldNotBeGeocoded));
         }
 
         return result;
