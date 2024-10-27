@@ -33,3 +33,4 @@ public class GeocodeResponse
     public List<Item> items { get; set; }
     public List<object> locality { get; set; }
 }
+#pragma warning restore

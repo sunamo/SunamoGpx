@@ -4,10 +4,10 @@ using SunamoGpx._sunamo;
 
 public class SunamoMapyCzService(ILogger logger)
 {
-    public async Task<List<Item>> AddressToCoords(string api_key, List<string> addressToGeocode, string fileToSave, string[] alreadyExisting, bool throwExWhenCouldNotBeGeocoded)
+    public async Task<List<Item>> AddressToCoords(string api_key, List<string> addressToGeocode, bool throwExWhenCouldNotBeGeocoded)
     {
-        List<Item> result = new List<Item>();
-        HttpClient httpClient = new HttpClient();
+        List<Item> result = new();
+        HttpClient httpClient = new();
 
         foreach (var item in addressToGeocode)
         {
@@ -33,14 +33,16 @@ public class SunamoMapyCzService(ILogger logger)
             if (throwExWhenCouldNotBeGeocoded)
             {
                 ThrowEx.Custom(message);
+                return null;
             }
             else
             {
-                logger.LogWarning($"For address {address} was not found any coordinates");
+                logger.LogWarning(message: $"For address {address} was not found any coordinates");
+                return null;
             }
         }
 
-        if (!resp.items.Any())
+        if (resp.items.Count == 0)
         {
             var message = $"For address {address} was not found any coordinates";
             if (throwExWhenCouldNotBeGeocoded)
@@ -49,7 +51,7 @@ public class SunamoMapyCzService(ILogger logger)
             }
             else
             {
-                logger.LogWarning(message);
+                logger.LogWarning(message: message);
             }
         }
         else
