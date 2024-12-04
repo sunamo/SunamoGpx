@@ -4,8 +4,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Description>Geocoding and more </Description>
-    <Version>24.11.12.1</Version>
-    <PackageReleaseNotes>Fix empty string for spaces</PackageReleaseNotes>
+    <Version>24.12.4.1</Version>
+    <PackageReleaseNotes>Remove vulnerable packages</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
@@ -15,7 +15,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BlueToque.SharpGPX" Version="2.22.302" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
     <PackageReference Include="Geo" Version="1.0.2" />
   </ItemGroup>
 </Project>
