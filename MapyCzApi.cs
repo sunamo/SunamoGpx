@@ -1,13 +1,17 @@
 namespace SunamoGpx;
 // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-public class Item
+#pragma warning disable IDE1006
+#pragma warning disable CS8618
+public class Item(string name, Position position)
 {
-    public string name { get; set; }
-    public string label { get; set; }
-    public Position position { get; set; }
-    public string type { get; set; }
-    public string location { get; set; }
-    public List<RegionalStructure> regionalStructure { get; set; }
+    public string Name { get; set; } = name;
+
+    public Position Position { get; set; } = position;
+
+    public string? Label { get; set; }
+    public string? Type { get; set; }
+    public string? Location { get; set; }
+    public List<RegionalStructure>? RegionalStructure { get; set; }
 }
 
 public class Position

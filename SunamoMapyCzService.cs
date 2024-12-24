@@ -1,9 +1,11 @@
+using SmartFormat;
+
 namespace SunamoGpx;
 public class SunamoMapyCzService(ILogger logger)
 {
     public async Task<List<Item?>> AddressToCoords(string api_key, List<string> addressToGeocode, bool throwExWhenCouldNotBeGeocoded)
     {
-        List<Item?> result = new();
+        List<Item?> result = [];
         HttpClient httpClient = new();
         foreach (var item in addressToGeocode)
         {
@@ -11,6 +13,7 @@ public class SunamoMapyCzService(ILogger logger)
         }
         return result;
     }
+
     public async Task<Item?> AddressToCoordsSingle(HttpClient httpClient, string address, string api_key, bool throwExWhenCouldNotBeGeocoded)
     {
         string geocodeApi = "https://api.mapy.cz/v1/geocode?query={0}&lang=cs&limit=5&type=regional&type=poi&apikey=" + api_key;
@@ -26,26 +29,24 @@ public class SunamoMapyCzService(ILogger logger)
             }
             else
             {
-                logger.LogWarning(message: $"For address {address} was not found any coordinates");
+                logger.LogWarning("For address {address} was not found any coordinates", address);
                 return null;
             }
         }
         if (resp.items.Count == 0)
         {
-            var message = $"For address {address} was not found any coordinates";
+            logger.LogWarning("For address {address} was not found any coordinates", address);
+
             if (throwExWhenCouldNotBeGeocoded)
             {
-                ThrowEx.Custom(message);
+                ThrowEx.Custom($"For address {address} was not found any coordinates");
             }
-            else
-            {
-                logger.LogWarning(message: message);
-            }
+
         }
         else
         {
             var first = resp.items.First();
-            first.name = address;
+            first.Name = address;
             return first;
         }
         return null;

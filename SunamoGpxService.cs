@@ -9,18 +9,25 @@ using System.Threading.Tasks;
 
 public class SunamoGpxService
 {
-    public string GenerateGpxFile(string creator, List<Item?> list)
+    public static string GenerateGpxFile(string creator, List<Item?> list)
     {
-        GpxClass gpx = new GpxClass();
-        gpx.Creator = creator;
+        GpxClass gpx = new()
+        {
+            Creator = creator
+        };
 
         foreach (var item in list)
         {
-            wptType waypoint = new wptType()
+            if (item == null)
             {
-                lat = (decimal)item.position.lat,
-                lon = (decimal)item.position.lon,
-                name = item.name
+                continue;
+            }
+
+            wptType waypoint = new()
+            {
+                lat = (decimal)item.Position.lat,
+                lon = (decimal)item.Position.lon,
+                name = item.Name
             };
             gpx.AddWaypoint(waypoint);
         }
