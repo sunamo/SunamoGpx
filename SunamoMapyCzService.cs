@@ -1,6 +1,5 @@
-using SmartFormat;
-
 namespace SunamoGpx;
+
 public class SunamoMapyCzService(ILogger logger)
 {
     public async Task<List<Item?>> AddressToCoords(string api_key, List<string> addressToGeocode, bool throwExWhenCouldNotBeGeocoded)
@@ -13,7 +12,6 @@ public class SunamoMapyCzService(ILogger logger)
         }
         return result;
     }
-
     public async Task<Item?> AddressToCoordsSingle(HttpClient httpClient, string address, string api_key, bool throwExWhenCouldNotBeGeocoded)
     {
         string geocodeApi = "https://api.mapy.cz/v1/geocode?query={0}&lang=cs&limit=5&type=regional&type=poi&apikey=" + api_key;
@@ -36,12 +34,10 @@ public class SunamoMapyCzService(ILogger logger)
         if (resp.items.Count == 0)
         {
             logger.LogWarning("For address {address} was not found any coordinates", address);
-
             if (throwExWhenCouldNotBeGeocoded)
             {
                 ThrowEx.Custom($"For address {address} was not found any coordinates");
             }
-
         }
         else
         {
