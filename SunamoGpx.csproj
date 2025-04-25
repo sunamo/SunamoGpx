@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Description>Geocoding and more </Description>
-    <Version>25.3.29.1</Version>
+    <Version>25.3.31.1</Version>
     <PackageReleaseNotes>Updated nuget to latest versions</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>

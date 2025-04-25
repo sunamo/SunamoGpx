@@ -2,18 +2,20 @@ namespace SunamoGpx;
 
 public class SunamoGpxService
 {
-    public static string GenerateGpxFile(string creator, List<Item?> list)
+    public string GenerateGpxFile(string creator, List<Item?> list)
     {
         GpxClass gpx = new()
         {
             Creator = creator
         };
+
         foreach (var item in list)
         {
             if (item == null)
             {
                 continue;
             }
+
             wptType waypoint = new()
             {
                 lat = (decimal)item.Position.lat,
@@ -22,6 +24,7 @@ public class SunamoGpxService
             };
             gpx.AddWaypoint(waypoint);
         }
+
         return gpx.ToXml(GpxVersion.GPX_1_1).Replace("utf-16", "utf-8");
     }
 }
