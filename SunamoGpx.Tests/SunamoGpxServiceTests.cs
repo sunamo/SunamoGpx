@@ -1,4 +1,7 @@
-﻿namespace SunamoGpx.Tests;
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
+namespace SunamoGpx.Tests;
 public class SunamoGpxServiceTests
 {
     [Fact]
@@ -10,8 +13,8 @@ public class SunamoGpxServiceTests
         list.Add(new Item("Leica", new Position { lat = double.Parse("50.0793428"), lon = double.Parse("14.4242769") }));
 
         SunamoGpxService sunamoGpxService = new();
-        var c = sunamoGpxService.GenerateGpxFile("Create with love", list);
+        var count = sunamoGpxService.GenerateGpxFile("Create with love", list);
 
-        await File.WriteAllTextAsync(@"D:\t.gpx", c);
+        await File.WriteAllTextAsync(@"D:\t.gpx", count);
     }
 }
