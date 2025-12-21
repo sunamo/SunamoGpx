@@ -1,9 +1,5 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoGpx;
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-#pragma warning disable IDE1006
-#pragma warning disable CS8618
+
 public class Item(string name, Position position)
 {
     public string Name { get; set; } = name;

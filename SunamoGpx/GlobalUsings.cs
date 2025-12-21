@@ -1,5 +1,3 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 global using SunamoGpx;
 global using SunamoGpx._sunamo;
 global using Microsoft.Extensions.Logging;
