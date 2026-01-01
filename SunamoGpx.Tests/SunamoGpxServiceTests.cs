@@ -1,20 +1,24 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-
 namespace SunamoGpx.Tests;
+
+/// <summary>
+/// Unit tests for the SunamoGpxService class.
+/// </summary>
 public class SunamoGpxServiceTests
 {
+    /// <summary>
+    /// Tests the GenerateGpxFile method to ensure it correctly generates a GPX file.
+    /// </summary>
     [Fact]
     public async Task GenerateGpxFileTest()
     {
-        List<Item> list = new();
+        List<Item?> items = new();
         //N, E
-        list.Add(new Item("Byt", new Position { lat = double.Parse("50.1115364"), lon = double.Parse("14.4965639") }));
-        list.Add(new Item("Leica", new Position { lat = double.Parse("50.0793428"), lon = double.Parse("14.4242769") }));
+        items.Add(new Item("Byt", new Position { Lat = double.Parse("50.1115364"), Lon = double.Parse("14.4965639") }));
+        items.Add(new Item("Leica", new Position { Lat = double.Parse("50.0793428"), Lon = double.Parse("14.4242769") }));
 
         SunamoGpxService sunamoGpxService = new();
-        var count = sunamoGpxService.GenerateGpxFile("Create with love", list);
+        var gpxContent = sunamoGpxService.GenerateGpxFile("Create with love", items);
 
-        await File.WriteAllTextAsync(@"D:\t.gpx", count);
+        await File.WriteAllTextAsync(@"D:\t.gpx", gpxContent);
     }
 }

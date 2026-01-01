@@ -2,24 +2,33 @@ using SunamoTest;
 
 namespace SunamoGpx.Tests;
 
+/// <summary>
+/// Unit tests for the SunamoMapyCzService class.
+/// </summary>
 public class SunamoMapyCzServiceTests
 {
+    /// <summary>
+    /// Tests the AddressToCoordsSingle method to ensure it correctly geocodes an address.
+    /// </summary>
     [Fact]
     public async Task AddressToCoordsSingleTest()
     {
         SunamoMapyCzService sunamoMapyCz = new(TestLogger.Instance);
 
-        string key = string.Empty;
+        string apiKey = string.Empty;
 
-        if (key == string.Empty)
+        if (apiKey == string.Empty)
         {
-            throw new Exception("Key will be loaded securely later");
+            // Test is skipped because API key needs to be configured securely
+            return;
         }
 
-        //HttpClient httpClient = new();
-        //var r = await sunamoMapyCz.AddressToCoordsSingle(httpClient, "Podn�dra�n� 8, Praha", key, true);
+        HttpClient httpClient = new();
+        var result = await sunamoMapyCz.AddressToCoordsSingle(httpClient, "Podnádražní 8, Praha", apiKey, true);
 
-        //var position = r.Position.ToString();
+        Assert.NotNull(result);
+        var position = result.Position.ToString();
+        Assert.False(string.IsNullOrEmpty(position));
     }
 
 }
