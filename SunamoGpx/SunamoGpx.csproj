@@ -4,8 +4,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Description>Geocoding and more </Description>
-    <Version>26.1.1.178</Version>
-    <PackageReleaseNotes>feat: Added net10.0 to TargetFrameworks</PackageReleaseNotes>
+    <Version>26.2.4.1</Version>
+    <PackageReleaseNotes>feat: Enable SourceLink and debug symbols </PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
@@ -13,12 +13,20 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DebugType>embedded</DebugType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BlueToque.SharpGPX" Version="2.22.302" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
     <PackageReference Include="Geo" Version="1.1.1" />
     <PackageReference Include="SmartFormat.NET" Version="3.6.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.*" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

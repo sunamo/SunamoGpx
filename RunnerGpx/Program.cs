@@ -1,8 +1,5 @@
-﻿using SunamoGpx.Tests;
-
-//SunamoMapyCzServiceTests sunamoMapyCzServiceTests = new();
-//await sunamoMapyCzServiceTests.AddressToCoordsSingleTest();
+// variables names: ok
+using SunamoGpx.Tests;
 
 SunamoGpxServiceTests t = new();
 await t.GenerateGpxFileTest();
-

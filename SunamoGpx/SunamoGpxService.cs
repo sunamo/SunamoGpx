@@ -18,18 +18,18 @@ public class SunamoGpxService
             Creator = creator
         };
 
-        foreach (var item in items)
+        foreach (var locationItem in items)
         {
-            if (item == null)
+            if (locationItem == null)
             {
                 continue;
             }
 
             wptType waypoint = new()
             {
-                lat = (decimal)item.Position.Lat,
-                lon = (decimal)item.Position.Lon,
-                name = item.Name
+                lat = (decimal)locationItem.Position.Lat,
+                lon = (decimal)locationItem.Position.Lon,
+                name = locationItem.Name
             };
             gpx.AddWaypoint(waypoint);
         }

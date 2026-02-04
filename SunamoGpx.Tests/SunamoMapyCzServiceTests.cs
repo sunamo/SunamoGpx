@@ -1,3 +1,4 @@
+// variables names: ok
 using SunamoTest;
 
 namespace SunamoGpx.Tests;

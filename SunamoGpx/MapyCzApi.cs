@@ -1,6 +1,6 @@
-using System.Text.Json.Serialization;
-
 namespace SunamoGpx;
+
+using System.Text.Json.Serialization;
 
 /// <summary>
 /// Represents a geocoded location item from Mapy.cz API response.

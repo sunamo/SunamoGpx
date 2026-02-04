@@ -17,9 +17,9 @@ public class SunamoMapyCzService(ILogger logger)
     {
         List<Item?> result = [];
         HttpClient httpClient = new();
-        foreach (var item in addressesToGeocode)
+        foreach (var address in addressesToGeocode)
         {
-            result.Add(await AddressToCoordsSingle(httpClient, item, apiKey, shouldThrowOnGeocodingFailure));
+            result.Add(await AddressToCoordsSingle(httpClient, address, apiKey, shouldThrowOnGeocodingFailure));
         }
         return result;
     }
@@ -35,8 +35,8 @@ public class SunamoMapyCzService(ILogger logger)
     public async Task<Item?> AddressToCoordsSingle(HttpClient httpClient, string address, string apiKey, bool shouldThrowOnGeocodingFailure)
     {
         string geocodeApi = "https://api.mapy.cz/v1/geocode?query={0}&lang=cs&limit=5&type=regional&type=poi&apikey=" + apiKey;
-        var jsonString = await httpClient.GetAsync(string.Format(geocodeApi, address));
-        var response = System.Text.Json.JsonSerializer.Deserialize<GeocodeResponse>(await jsonString.Content.ReadAsStringAsync());
+        var httpResponse = await httpClient.GetAsync(string.Format(geocodeApi, address));
+        var response = System.Text.Json.JsonSerializer.Deserialize<GeocodeResponse>(await httpResponse.Content.ReadAsStringAsync());
         if (response == null)
         {
             var message = $"Was returned empty response";
