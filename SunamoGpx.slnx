@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoGpx.Tests\\SunamoGpx.Tests.csproj" />
+  <Project Path="RunnerGpx\\RunnerGpx.csproj" />
+  <Project Path="SunamoGpx\SunamoGpx.csproj" />
+</Solution>
