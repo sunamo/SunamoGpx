@@ -11,9 +11,6 @@ internal class ThrowEx
     /// <param name="message">The exception message to throw.</param>
     internal static void Custom(string message)
     {
-#if DEBUG
-        Debugger.Break();
-#endif
         throw new Exception(message);
     }
 }
