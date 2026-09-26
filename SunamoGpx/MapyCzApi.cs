@@ -59,10 +59,7 @@ public class Position
     /// Returns a string representation of the position in "latitude longitude" format.
     /// </summary>
     /// <returns>A string containing the latitude and longitude separated by a space.</returns>
-    public override string ToString()
-    {
-        return Lat + " " + Lon;
-    }
+    public override string ToString() => $"{Lat} {Lon}";
 }
 
 /// <summary>

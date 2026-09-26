@@ -39,7 +39,7 @@ public class SunamoMapyCzService(ILogger logger)
         var response = System.Text.Json.JsonSerializer.Deserialize<GeocodeResponse>(await httpResponse.Content.ReadAsStringAsync());
         if (response == null)
         {
-            var message = $"Was returned empty response";
+            var message = "Was returned empty response";
             if (shouldThrowOnGeocodingFailure)
             {
                 ThrowEx.Custom(message);
