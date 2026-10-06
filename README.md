@@ -1,5 +1,10 @@
 # SunamoGpx
 
+## Short description
+
+Knihovna pro práci s GPX soubory a geokódováním. Obsahuje datové třídy (Position, Item), službu SunamoGpxService a klienta pro API Mapy.cz (MapyCzApi, SunamoMapyCzService). Součástí je Runner a testy.
+
+
 Geocoding and more
 
 ## Overview
