@@ -1,7 +1,16 @@
 namespace SunamoGpx;
 
+/// <summary>
+/// Represents the sunamo gpx service type.
+/// </summary>
 public class SunamoGpxService
 {
+    /// <summary>
+    /// Generate gpx file.
+    /// </summary>
+    /// <param name="creator">The creator.</param>
+    /// <param name="items">The items.</param>
+    /// <returns>The generate gpx file result.</returns>
     public string GenerateGpxFile(string creator, List<Item?> items)
     {
         GpxClass gpx = new()

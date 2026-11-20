@@ -1,7 +1,19 @@
 namespace SunamoGpx;
 
+/// <summary>
+/// Sunamo mapy cz service.
+/// </summary>
+/// <param name="logger">The logger.</param>
+/// <returns>The sunamo mapy cz service result.</returns>
 public class SunamoMapyCzService(ILogger logger)
 {
+    /// <summary>
+    /// Address to coords.
+    /// </summary>
+    /// <param name="apiKey">The api key.</param>
+    /// <param name="addressesToGeocode">The addresses to geocode.</param>
+    /// <param name="shouldThrowOnGeocodingFailure">The should throw on geocoding failure.</param>
+    /// <returns>The address to coords result.</returns>
     public async Task<List<Item?>> AddressToCoords(string apiKey, List<string> addressesToGeocode, bool shouldThrowOnGeocodingFailure)
     {
         List<Item?> result = [];
@@ -13,6 +25,14 @@ public class SunamoMapyCzService(ILogger logger)
         return result;
     }
 
+    /// <summary>
+    /// Address to coords single.
+    /// </summary>
+    /// <param name="httpClient">The http client.</param>
+    /// <param name="address">The address.</param>
+    /// <param name="apiKey">The api key.</param>
+    /// <param name="shouldThrowOnGeocodingFailure">The should throw on geocoding failure.</param>
+    /// <returns>The address to coords single result.</returns>
     public async Task<Item?> AddressToCoordsSingle(HttpClient httpClient, string address, string apiKey, bool shouldThrowOnGeocodingFailure)
     {
         string geocodeApi = "https://api.mapy.cz/v1/geocode?query={0}&lang=cs&limit=5&type=regional&type=poi&apikey=" + apiKey;
